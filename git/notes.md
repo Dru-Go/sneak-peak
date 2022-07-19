@@ -45,5 +45,27 @@ git diff
 ```
 - View the staged changes  (difference b/n the repository and the staging)
 ```sh
-git diff --staged
+git diff --staged or git diff --cached
 ```
+
+## Git Delete
+```sh
+git rm <filename>
+```
+> NOTE removes and add it to staged
+
+## Git Rename
+```sh
+git mv <filename>
+```
+> NOTE Git does not track file renames in the repository very well, as it represents change to file name as deleted, hence git mv (move is used to rename the file)
+
+## Git Commit
+```sh
+git commit -m "<commit message>"
+```
+
+```sh
+git commit -a <filename> -m "<commit message>"
+```
+> Commits with adding the file 
