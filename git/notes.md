@@ -1,4 +1,4 @@
-# Git  Personal Notes
+# Git Personal Notes
 
 ## Git Tree
 

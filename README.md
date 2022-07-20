@@ -1,2 +1,3 @@
 # sneak-peak
-Cheat sheet for the most common resources on the internet
+
+Cheat sheet for the most commonly forgotten resources
