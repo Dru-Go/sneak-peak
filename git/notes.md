@@ -46,14 +46,19 @@ git diff
 ```
 - View the staged changes  (difference b/n the repository and the staging)
 ```sh
-git diff --staged 
-# git diff --cached
+git diff --staged --color-words
+# git diff --cached --color-words
 ```
 - View difference b/n commits
 ```sh
 git diff <commit_hash>..<commit_hash>
 # git diff ac00756b..0d697635
-# git diff --stat --summary ac00756b..0d697635 // cool
+# git diff --color-words --stat --summary ac00756b..0d697635 // cool
+```
+- View difference b/n branches
+```sh
+git diff <branch_name>..<branch_name>
+# git diff --color-words --stat --summary branch_name..master // cool
 ```
 
 ## Git Delete
@@ -113,6 +118,7 @@ git log --oneline
 git log --grep=""
 git log -p # shows changes with the log
 git log <filename/foldername> # shows changes to those file and folders
+git log <branch_name> # shows changes to those file and folders
 git log --stat --summary # shows summary of the changes made to files
 git log --graph # shows tree of the changes made
 git log --oneline --graph --all --decorate # cool log
@@ -163,7 +169,7 @@ git clean -f # delete the changes
 
 ## Git Referrals
 - cleans new added files in the directory  
-```sh e5418dd..a783a45
+```sh 
 # Parent Commit
 - HEAD^ || HEAD~1 # ~ represents the depth we want to go up
 - <commit_hash>^ 
@@ -173,5 +179,38 @@ git clean -f # delete the changes
 - <commit_hash>^^ 
 - master^^ 
 ```
+
+## Git Branch
+- manage git branches  
+```sh 
+git branch # lists all branches
+git branch <branch_name>
+# create and switch to new branch
+git checkout -b <branch_name>
+# rename a branch
+git branch -m <branch_name> <new_branch_name>
+# delete a branch
+git branch -d <branch_name>
+```
+
+## Git Merge (fast-forward | recursive)
+- merge git branches  
+```sh 
+git merge <branch_name>
+
+#show merged branches
+git branch --merged
+
+git merge --no-ff <branch_name> # forces the merge to make a commit regarding the merge
+git merge --ff-only <branch_name> # make merge only if u can do a fast forward merge
+
+# abort merge
+git merge --abort 
+git reset --hard HEAD
+```
+> NOTE make sure you have a clean working directory before you make a merge
+
+
+
 
 
