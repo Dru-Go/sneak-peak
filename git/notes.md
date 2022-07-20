@@ -42,10 +42,17 @@ git add <file name>
 - By default compares from working changes (difference b/n the staging and the working)
 ```sh
 git diff
+# git diff --color-words 
 ```
 - View the staged changes  (difference b/n the repository and the staging)
 ```sh
-git diff --staged or git diff --cached
+git diff --staged 
+# git diff --cached
+```
+- View difference b/n commits
+```sh
+git diff <commit_hash>..<commit_hash>
+# git diff ac00756b..0d697635
 ```
 
 ## Git Delete
@@ -66,6 +73,104 @@ git commit -m "<commit message>"
 ```
 
 ```sh
-git commit -a <filename> -m "<commit message>"
+git commit -am "<commit message>" 
+# git commit -all -m "<commit message>"
 ```
-> Commits with adding the file 
+> Add and Commit file in one line
+
+> Note this does not add untracked files
+
+```sh
+git add <file/foldername>
+git commit --amend -m "<commit message>" 
+```
+> commit message will be updated with the commit hash
+
+> NOTE this can only change the last commit
+
+## Git Show
+- shows the file changes in a commit 
+```sh
+git show <commit hash>
+# git show --color-words <commit hash>
+# eg git show ac00756ba4a9cd29e05b6a446734d30e2707ab1d
+```
+
+```sh
+git commit -am "<commit message>" 
+# git commit -all -m "<commit message>"
+```
+> Add and Commit file in one line
+
+> Note this does not add untracked files
+
+## Git Log
+- shows the commit logs
+```sh
+git log 
+git log --oneline
+git log --grep=""
+git log -p # shows changes with the log
+git log <filename/foldername> # shows changes to those file and folders
+git log --stat --summary # shows summary of the changes made to files
+git log --graph # shows tree of the changes made
+git log --oneline --graph --all --decorate # cool log
+```
+
+## Git Checkout
+- Used to undo some changes from the working repo 
+> __cleanup the working directory__
+```sh
+git checkout -- <filename/foldername> # -- tells git to look for the file/folder in the current folder instead of looking for a branch
+```
+
+- Checkout a specific file to specific commit
+```sh
+git checkout <commit_hash> -- <filename/foldername> # -- tells git to look for the file/folder in the current folder instead of looking for a branch
+```
+
+## Git Reset
+> __cleanup the staging directory__
+- Used to undo some changes from the staged to the working repo
+```sh
+git reset HEAD <filename/foldername>
+```
+
+- Also used to set where the HEAD pointer to point to
+- very distractive (unsafe)
+```sh
+git reset --soft <commit_hash> # this is the safe option, this will add all the changes of the commits being ignored to the staging index or working directory
+
+git reset --mixed <commit_hash> # this is another option which will change the staging index to match the working directory
+
+git reset --hard <commit_hash> # this is another option which will change the staging index and the working directory 
+```
+## Git Revert
+- completely undo the changes made to a commit 
+```sh
+git revert -n <commit_hash> # puts the changes to staged
+git revert -n @ # To revert the most recent commit:
+git revert -n  HEAD~<4> # To revert the 5th last commit:
+```
+
+## Git Clean
+- cleans new added files in the directory  
+```sh
+git clean -n # this will show the files to be deleted  
+git clean -f # delete the changes   
+```
+
+## Git Referrals
+- cleans new added files in the directory  
+```sh
+# Parent Commit
+- HEAD^ || HEAD~1 # ~ represents the depth we want to go up
+- <commit_hash>^ 
+- master^ 
+# Grand Parent Commit
+- HEAD^^ || HEAD~2 # ~ represents the depth we want to go up
+- <commit_hash>^^ 
+- master^^ 
+```
+
+
