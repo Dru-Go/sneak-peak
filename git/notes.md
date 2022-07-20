@@ -53,6 +53,7 @@ git diff --staged
 ```sh
 git diff <commit_hash>..<commit_hash>
 # git diff ac00756b..0d697635
+# git diff --stat --summary ac00756b..0d697635 // cool
 ```
 
 ## Git Delete
@@ -162,7 +163,7 @@ git clean -f # delete the changes
 
 ## Git Referrals
 - cleans new added files in the directory  
-```sh
+```sh e5418dd..a783a45
 # Parent Commit
 - HEAD^ || HEAD~1 # ~ represents the depth we want to go up
 - <commit_hash>^ 
